@@ -8,8 +8,15 @@ public class ContactsManager {
     ArrayList<Contact> list = new ArrayList<Contact>();
 
     public void addContact(String name, String email, String phoneNumber) {
-        Contact contact = new Contact(name, email, phoneNumber);
-        list.add(contact);
+        try{
+            Contact contact = new Contact(name, email, phoneNumber);
+            list.add(contact);
+        }catch (Exception e){
+            if(name.isEmpty() || name==null){
+                throw new InvalidContactNameException();
+            }
+        }
+
     }
 
     public void printAllContacts() {
